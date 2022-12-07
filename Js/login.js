@@ -1,8 +1,6 @@
 var app= angular.module("fundooapp",['ngStorage']);
 
-app.controller("fundooappCtrl",function($scope,$http,$localStorage){
-    
-
+app.controller("fundooappCtrl",function($scope,$http,$localStorage,$window){
     $scope.postdata=function(firstName,lastName,email, password){
         var data={
             firstName:firstName,
@@ -42,7 +40,9 @@ app.controller("fundooappCtrl",function($scope,$http,$localStorage){
 
             if(response.data){
                 $localStorage.message=response.data.data;
-                console.log($localStorage.get('token'));
+                console.log($localStorage.message);
+                var url = "DashBoard.html";
+                $window.location.href = url;
                 $scope.email=response.data.email;
                 $scope.password=response.data.password;
             }
