@@ -13,23 +13,34 @@ angular.
     templateUrl: "Components/Navbar/Navbar.html",
     
   }).
-  controller('TakenoteCtrl',function(){
+  controller('TakenoteCtrl',function($scope,$http){
     var note=this;
     note.toggle=false;
+    $scope.showButtons = [0];
 
-    note.list=[
-      {name:'raj',age:2},
-      {name:'rajs',age:4}
-    ];
-
-    note.addNote=function(name,age){
-      var data={
-        name:name,
-        age:age
+  $scope.toggle1 = function() {
+    $scope.showButtons = [1];
+  };
+  $scope.postdata=function(title,note){
+    var data={
+      title: title,
+      note: note,
     }
-      console.log("hi")
-      note.list.push({name:data.name,age:data.age});
-      note.name='';
-      note.age=0;
-    };
+    //call the service
+    $http.post("https://localhost:44365/api/Notes/Add",JSON.stringify(data))
+    .then(function(response){
+        console.log(response);
+
+        if(response.data){
+            $scope.msg="Post Data Submitted";
+          
+            $scope.title=response.data.title;
+            $scope.note=response.data.note;
+        }
+    },function(error){
+        console.log(error)
+    })
+};
+
+
   });

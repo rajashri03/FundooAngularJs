@@ -30,9 +30,9 @@
       </div>
     </div>
     <div ng-controller="TakenoteCtrl as note">
-    <div class="takenoteone" >
+    <div class="takenoteone" ng-show="showButtons.includes(0)" ng-click="toggle1()" >
       <div class="note">
-          <input type="text" placeholder="Take a note..." ng-click="note.toggle=true"/>
+          <input type="text" placeholder="Take a note..."/>
       </div>
       <div class="take">
           <img src="../../Images/llist.png" height="20px"/>
@@ -40,7 +40,7 @@
           <img src="../../Images/img.png" height="20px"/>
       </div>
   </div>
-  <div class="takenotetwo" ng-class="{hidden:!note.toggle}">
+  <div class="takenotetwo" ng-show="showButtons.includes(1)">
     <div class="notesbody">
         <div class="note">
             <input type="text" placeholder="Title" ng-model="name"/>
@@ -61,7 +61,7 @@
             <img src="../../Images/archive.png" />
             <img src="../../Images/more.png"/>
         </div>
-        <div class="close" ng-click="addNote(name,age)">
+        <div class="close" ng-click="postdata(title,note)">
             close
         </div>
     </div>
