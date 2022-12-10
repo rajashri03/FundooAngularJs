@@ -1,0 +1,94 @@
+<html ng-app="fundooApp">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="nav-list.component.js"></script>
+  <link href="Components/Navbar/Navbar.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Use a custom component to render a list of phones -->
+  <div>
+    <div class='header'> <div class='icons'>
+       <img src='../../Images/menu.png'/>
+        <img src='../../Images/keep.png' class='keepimg'/>
+        <h1>FundooNotes</h1>
+      </div>
+        <div class='search'>
+          <img src='../../Images/search.png' height='20px'/>  
+          <input type='text' placeholder='Search'/>
+        </div>
+        <div class='icons'>
+          <img src='../../Images/refresh.png'/>
+          <img src='../../Images/list.png' className='hideimg'/>
+          <img src='../../Images/setting.png' className='hideimg'/>
+        </div>
+        <div class='icons'>
+          <img src='../../Images/dot.png' className='hideimg'/>
+          <div class='profile' className='hideimg'>r</div> 
+        </div>
+      </div>
+    </div>
+    <div ng-controller="TakenoteCtrl as note">
+    <div class="takenoteone" >
+      <div class="note">
+          <input type="text" placeholder="Take a note..." ng-click="note.toggle=true"/>
+      </div>
+      <div class="take">
+          <img src="../../Images/llist.png" height="20px"/>
+          <img src="../../Images/draw.png" height="20px"/>
+          <img src="../../Images/img.png" height="20px"/>
+      </div>
+  </div>
+  <div class="takenotetwo" ng-class="{hidden:!note.toggle}">
+    <div class="notesbody">
+        <div class="note">
+            <input type="text" placeholder="Title" ng-model="name"/>
+        </div>
+        <div class="take">
+            <img src="../../Images/pin.png" height="20px" onClick={takePin}/>
+        </div>
+    </div>
+    <div class="notesbody">
+        <div class="note">
+            <input type="text" ng-model="age" placeholder="Take a note..." >
+        </div>
+    </div>
+    <div class="notesfooter">
+        <div class="notesicons">
+           
+            <img src="../../Images/img.jpg"/>
+            <img src="../../Images/archive.png" />
+            <img src="../../Images/more.png"/>
+        </div>
+        <div class="close" ng-click="addNote(name,age)">
+            close
+        </div>
+    </div>
+  </div>
+    <div class="sidebar">
+      
+      <ul class="nav">
+      <li class="active"><a href="#">
+      <i class="fas fa-server"></i>
+      <span>Notes</span>
+      </a></li>
+      <li><a href="#">
+      <i class="fas fa-concierge-bell"></i>
+      <span>Reminders</span>
+      </a></li>
+      <li><a href="#">
+      <i class="fas fa-calendar-alt"></i>
+      <span>Archive</span>
+      </a></li>
+      <li><a href="#">
+      <i class="fas fa-question-circle"></i>
+      <span>Trash</span>
+      </a></li>
+      
+      </ul>
+      </div>
+     
+</div>
+</body>
+</html>
